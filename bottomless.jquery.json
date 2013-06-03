@@ -3,7 +3,7 @@
   "title": "bottomless",
   "description": "jquery-bottomless is an infinite scroll plugin that has been torture-tested by naive users with old versions of IE, which is important because permanently replacing pagination with infinite scroll on a public facing site is a high risk, high benefit proposition. jquery-bottomless has a sweet and simple API.",
   "keywords": ["bottomless", "button", "apostrophe", "punkave"],
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": {
     "name": "P'unk Avenue",
     "url": "http://punkave.com/"
