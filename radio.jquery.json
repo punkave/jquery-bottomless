@@ -3,7 +3,7 @@
   "title": "radio",
   "description": "radio lets you get and set the current value of a group of radio buttons, filling a gap in jQuery's $.val. It is not a replacement for radio buttons. It just makes working with them pleasant.",
   "keywords": ["radio", "button", "apostrophe", "punkave"],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "P'unk Avenue",
     "url": "http://punkave.com/"
@@ -23,7 +23,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/punkave/jquery-radio/LICENSE"
+      "url": "https://github.com/punkave/jquery-radio/LICENSE.md"
     }
   ],
   "bugs": "https://github.com/punkave/jquery-radio/issues",
