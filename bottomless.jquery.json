@@ -1,7 +1,7 @@
 {
   "name": "bottomless",
   "title": "bottomless",
-  "description": "bottomless lets you get and set the current value of a group of bottomless buttons, filling a gap in jQuery's $.val. It is not a replacement for bottomless buttons. It just makes working with them pleasant.",
+  "description": "jquery-bottomless is an infinite scroll plugin that has been torture-tested by naive users with old versions of IE, which is important because permanently replacing pagination with infinite scroll on a public facing site is a high risk, high benefit proposition. jquery-bottomless has a sweet and simple API.",
   "keywords": ["bottomless", "button", "apostrophe", "punkave"],
   "version": "0.1.0",
   "author": {
