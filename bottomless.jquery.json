@@ -1,0 +1,36 @@
+{
+  "name": "bottomless",
+  "title": "bottomless",
+  "description": "bottomless lets you get and set the current value of a group of bottomless buttons, filling a gap in jQuery's $.val. It is not a replacement for bottomless buttons. It just makes working with them pleasant.",
+  "keywords": ["bottomless", "button", "apostrophe", "punkave"],
+  "version": "0.1.0",
+  "author": {
+    "name": "P'unk Avenue",
+    "url": "http://punkave.com/"
+  },
+  "maintainers": [
+    {
+      "name": "Tom Boutell",
+      "email": "tom@punkave.com",
+      "url": "http://punkave.com"
+    },
+    {
+      "name": "Kyle Stetz",
+      "email": "kyle@punkave.com",
+      "url": "http://punkave.com"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/punkave/jquery-bottomless/LICENSE.md"
+    }
+  ],
+  "bugs": "https://github.com/punkave/jquery-bottomless/issues",
+  "homepage": "https://github.com/punkave/jquery-bottomless",
+  "docs": "https://github.com/punkave/jquery-bottomless",
+  "download": "https://github.com/punkave/jquery-bottomless",
+  "dependencies": {
+    "jquery": ">=1.9"
+  }
+}
