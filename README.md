@@ -47,7 +47,7 @@ are not preloading any content and wish the first page to load immediately, set 
 Set `now` to true to load the first page immediately. You do not have to
 set `page` if you set `now`.
 
-`criteria` contains additional query string parameters and is often used when additional filtering options besides pagination are available. Also note the `reset` event below.
+`criteria` contains additional query string parameters and is often used when additional filtering options besides pagination are available. Also note the `aposScrollReset` event below.
 
 `method` can be used to change the HTTP method from GET to POST.
 
@@ -59,21 +59,21 @@ waiting in most cases. `distance` defaults to 350.
 
 ### Events
 
-You can trigger an `apos.scroll.reset` on the element to clear it and
+You can trigger an `aposScrollReset` on the element to clear it and
 reload page one.
 
 You can also provide new criteria for the source URL's query string when triggering this event:
 
-$('.posts').trigger('apos.scroll.reset', [ { tag: 'blue' } ])
+$('.posts').trigger('aposScrollReset', [ { tag: 'blue' } ])
 
 bottomless will trigger the following events on the element on its own:
 
-`apos.scroll.started` means page loading has begun.
-`apos.scroll.stopped` means page loading has just stopped (whether successfully or not).
-`apos.scroll.loaded` means a page has just been loaded successfully.
-`apos.scroll.ended` means a 404 has been received and there is no
+`aposScrollStarted` means page loading has begun.
+`aposScrollStopped` means page loading has just stopped (whether successfully or not).
+`aposScrollLoaded` means a page has just been loaded successfully.
+`aposScrollEnded` means a 404 has been received and there is no
 more content to load. No further pages will be loaded unless
-an `apos.scroll.reset` event is triggered.
+an `aposScrollReset` event is triggered.
 
 ### Properties
 
@@ -85,6 +85,10 @@ currently loading a page with:
 You may check the current page number with:
 
     $('.posts').data('page')
+
+## Changelog
+
+0.2.0: all events now have camelCasedNames, for consistency with the rest of Apostrophe and because dotted names should be reserved for jQuery's "namespacing" mechanism, which is a way of adding and removing groups of event handlers and not a mechanism for setting up distinct events. Since this will break code that already triggers `apos.scroll.reset` we have bumped the middle version number.
 
 ## About P'unk Avenue and Apostrophe
 
