@@ -12,16 +12,15 @@ You need jQuery, of course. `jquery-bottomless` is actively supported with jQuer
 
 This example assumes we have an element with the class `apos-blog-posts` that already contains the first page of blog posts. We also have a pager with the class `apos-pager` that should be hidden by JavaScript when infinite scroll is available. (This is a common pattern to ensure Google still sees a pager.)
 
-    $('.apos-blog-posts').infiniteScroll({
-      // We'll hit up page.url with a `page` query parameter.
-      // By default, assumes we already loaded page 1, and
-      // fetches page 2. Server MUST return a 404 status code
-      // if there are no more pages
-      source: {{ page.url | json }}
+    $(function() {
+      $('.my-blog-posts').bottomless({
+        url: {{ page.url | json }}
+      });
+      // We don't need the pager if we can infinite scroll
+      // However we hide it with JavaScript so that
+      // Google still finds it otherwise we have serious SEO issues!
+      $('.apos-pager').hide();
     });
-
-    // Hide our pager since we're doing infinite scroll
-    $('.apos-pager').hide();
 
 ### Basics
 
@@ -29,12 +28,12 @@ The element you apply this plugin to must be the element that you'd
 like to append new pages of content to. It should be initially empty
 (if you are using the `now` option) or be prepopulated with the content of page 1 (this is the default). Currently the element must not have an internal scrollbar and should cause the height of the page to grow.
 
-### Required Option: `source`
+### Required Option: `url`
 
-`source` is the URL to fetch new "pages" from. The URL should return an
+`url` is the URL to fetch new "pages" from. The URL should return an
 HTML fragment containing one page's worth of content, based on the
 `page` parameter to the URL. Each retrieved fragment is appended to the element. The definition of "one page" is up to
-you but it ought to be at least a screenful. **Your source must return a 404 status cocde if a page beyond the last page is requested!**
+you but it ought to be at least a screenful. **Your URL must return a 404 status code if a page beyond the last page is requested!**
 
 The first `page` is page 1. It is OK to return an empty page for page 1 if there is no content.
 
@@ -62,7 +61,7 @@ waiting in most cases. `distance` defaults to 350.
 You can trigger an `aposScrollReset` on the element to clear it and
 reload page one.
 
-You can also provide new criteria for the source URL's query string when triggering this event:
+You can also provide new criteria for the URL's query string when triggering this event:
 
 $('.posts').trigger('aposScrollReset', [ { tag: 'blue' } ])
 
@@ -87,6 +86,8 @@ You may check the current page number with:
     $('.posts').data('page')
 
 ## Changelog
+
+0.2.1: the example and documentation are now correct. Thanks to Thibault.
 
 0.2.0: all events now have camelCasedNames, for consistency with the rest of Apostrophe and because dotted names should be reserved for jQuery's "namespacing" mechanism, which is a way of adding and removing groups of event handlers and not a mechanism for setting up distinct events. Since this will break code that already triggers `apos.scroll.reset` we have bumped the middle version number.
 
