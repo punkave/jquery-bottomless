@@ -56,23 +56,33 @@ set `page` if you set `now`.
 which the next page begins loading, hopefully preventing the user from
 waiting in most cases. `distance` defaults to 350.
 
+`success` allows you to pass your own function to accept a new page from the server and do something with it. This is your ticket if you are not simply appending HTML to a container element. The `success` function receives the data as its only argument. If your server does not use a 404 status code to indicate that there are no more pages, you may wish to trigger an `aposScrollEnded` event on the element from your success function to signify that there is no more data. Also see `skipAndLimit`.
+
+`dataType`, which defaults to `html`, allows you to specify what kind of data is coming from the server. We suggest setting this to `json` if you want to specify a `success` function that expects data rather than appending HTML to a container.
+
+`skipAndLimit` causes bottomless to send `skip` and `limit` parameters to the server, rather than the page number. You should also set the `perPage` option, which defaults to 20, so that `skip` and `limit` can be determined. `skip` and `limit` will be familiar to MongoDB developers, but can also be used as `offset` and `limit` with SQL-based servers.
+
+`reset` allows you to specify a function to be called to actually empty the element of previous content when an `aposScrollReset` event is received. If you do not specify this option, `$el.html('')` is used. If there are children of the element that shouldn't be removed on reset, make sure you specify your own `reset` function.
+
 ### Events
 
-You can trigger an `aposScrollReset` on the element to clear it and
+You can trigger `aposScrollReset` on the element to clear it and
 reload page one.
+
+You can also trigger `aposScrollEnded` on the element to signify that there is no more content to load. This is useful if you do not wish to use a 404 status code from the server to signify this.
 
 You can also provide new criteria for the URL's query string when triggering this event:
 
 $('.posts').trigger('aposScrollReset', [ { tag: 'blue' } ])
+
+You can trigger `aposScrollDestroy` on the element to shut down bottomless completely, destroying its interval timer so it does not consume any resources. This is usually not necessary, but you may find it useful if you are removing an element powered by bottomless from the DOM without leaving the page entirely. Even if you don't trigger this event, bottomless will behave respectfully and not attempt to examine its position on the page or fetch more content while it is not in the DOM.
 
 bottomless will trigger the following events on the element on its own:
 
 `aposScrollStarted` means page loading has begun.
 `aposScrollStopped` means page loading has just stopped (whether successfully or not).
 `aposScrollLoaded` means a page has just been loaded successfully.
-`aposScrollEnded` means a 404 has been received and there is no
-more content to load. No further pages will be loaded unless
-an `aposScrollReset` event is triggered.
+`aposScrollEnded` means a 404 has been received and there is no more content to load. No further pages will be loaded unless an `aposScrollReset` event is triggered.
 
 ### Properties
 
@@ -86,6 +96,10 @@ You may check the current page number with:
     $('.posts').data('page')
 
 ## Changelog
+
+0.2.3: added the `success`, `dataType`, `skipAndLimit` and `reset` options, which permit `jquery-bottomless` to be used easily when you are not rendering HTML on the server side or wish `bottomless` to calculate its own page offsets. Also the `aposScrollDestroy` event, which completely kills the interval timer so that bottomless ceases to use any resources. And bottomless behaves politely when not in the DOM even if you don't use that event. You should use `aposScrollDestroy` only if you are completely through with bottomless for this element forever.
+
+0.2.2: packaging issues, no code changes.
 
 0.2.1: the example and documentation are now correct. Thanks to Thibault.
 
