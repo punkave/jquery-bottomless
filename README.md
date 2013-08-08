@@ -14,7 +14,7 @@ This example assumes we have an element with the class `apos-blog-posts` that al
 
     $(function() {
       $('.my-blog-posts').bottomless({
-        url: {{ page.url | json }}
+        url: '/fetch-blog-content'
       });
       // We don't need the pager if we can infinite scroll
       // However we hide it with JavaScript so that
