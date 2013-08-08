@@ -73,7 +73,7 @@ You can also trigger `aposScrollEnded` on the element to signify that there is n
 
 You can also provide new criteria for the URL's query string when triggering this event:
 
-$('.posts').trigger('aposScrollReset', [ { tag: 'blue' } ])
+    $('.posts').trigger('aposScrollReset', [ { tag: 'blue' } ])
 
 You can trigger `aposScrollDestroy` on the element to shut down bottomless completely, destroying its interval timer so it does not consume any resources. This is usually not necessary, but you may find it useful if you are removing an element powered by bottomless from the DOM without leaving the page entirely. Even if you don't trigger this event, bottomless will behave respectfully and not attempt to examine its position on the page or fetch more content while it is not in the DOM.
 
