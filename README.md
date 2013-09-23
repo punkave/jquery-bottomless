@@ -97,6 +97,8 @@ You may check the current page number with:
 
 ## Changelog
 
+0.2.4: call `start` on every page load. Thanks to [Samer Buna](https://github.com/samerbuna).
+
 0.2.3: added the `success`, `dataType`, `skipAndLimit` and `reset` options, which permit `jquery-bottomless` to be used easily when you are not rendering HTML on the server side or wish `bottomless` to calculate its own page offsets. Also the `aposScrollDestroy` event, which completely kills the interval timer so that bottomless ceases to use any resources. And bottomless behaves politely when not in the DOM even if you don't use that event. You should use `aposScrollDestroy` only if you are completely through with bottomless for this element forever.
 
 0.2.2: packaging issues, no code changes.
