@@ -97,6 +97,10 @@ You may check the current page number with:
 
 ## Changelog
 
+0.2.5: gracefully debounce reset requests to prevent race conditions and slamming of the server. If an `aposScrollReset` arrives while a previous reset request is in progress, retry it in 500ms. If another reset has already been deferred, cancel that one in favor of the new one. This means you can safely trigger `aposScrollReset` on every keystroke, for instance. use Also safely queue simultaneous page loads, although that should be unlikely.
+
+Also, when loading page one, defer emptying the container until a response is received. This prevents unsightly flicker when triggering `aposScrollReset` on keystrokes.
+
 0.2.4: call `start` on every page load. Thanks to [Samer Buna](https://github.com/samerbuna).
 
 0.2.3: added the `success`, `dataType`, `skipAndLimit` and `reset` options, which permit `jquery-bottomless` to be used easily when you are not rendering HTML on the server side or wish `bottomless` to calculate its own page offsets. Also the `aposScrollDestroy` event, which completely kills the interval timer so that bottomless ceases to use any resources. And bottomless behaves politely when not in the DOM even if you don't use that event. You should use `aposScrollDestroy` only if you are completely through with bottomless for this element forever.
