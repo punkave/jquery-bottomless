@@ -97,6 +97,8 @@ You may check the current page number with:
 
 ## Changelog
 
+0.2.6: always set the `page` data attribute after calling the `success` function, rather than leaving it to a function that can't even see the page number.
+
 0.2.5: gracefully debounce reset requests to prevent race conditions and slamming of the server. If an `aposScrollReset` arrives while a previous reset request is in progress, retry it in 500ms. If another reset has already been deferred, cancel that one in favor of the new one. This means you can safely trigger `aposScrollReset` on every keystroke, for instance. use Also safely queue simultaneous page loads, although that should be unlikely.
 
 Also, when loading page one, defer emptying the container until a response is received. This prevents unsightly flicker when triggering `aposScrollReset` on keystrokes.
